@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @room.name %>
+</p>
+
+<p>
+  <strong>Description</strong>
+  <%= @room.description %>
+</p>
+
+
+<table>
+<% @messages.each do |message| %>
+  <tr>
+    <td>username</td>
+    <td><%= message.username %></td>
+  </tr>
+  <tr>
+    <td>message</td>
+    <td><%= message.body %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= form_for Message.new, :url => room_messages_path do |f| %>
+  <%= f.text_field :username %>
+  <%= f.text_field :body %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.submit "Send" %>
+<% end %>

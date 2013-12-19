@@ -10,25 +10,7 @@
   <%= @room.description %>
 </p>
 
-<table>
-<% @room.messages.each do |message| %>
-  <tr>
-    <td>username</td>
-    <td><%= message.username %></td>
-  </tr>
-  <tr>
-    <td>message</td>
-    <td><%= message.body %></td>
-  </tr>
-<% end %>
-</table>
 
-<%= form_for Message.new, :url => messages_path do |f| %>
-  <%= f.text_field :username %>
-  <%= f.text_field :body %>
-  <%= f.hidden_field :room_id, value: @room.id %>
-  <%= f.submit "Send" %>
-<% end %>
 
 <%= link_to 'Edit', edit_room_path(@room) %>
 <%= link_to 'Back', rooms_path %>

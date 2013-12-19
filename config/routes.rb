@@ -1,8 +1,10 @@
 Hoge::Application.routes.draw do
   root to: "rooms#index"
 
-  resources :rooms
-  resources :messages, :only=> "create"
+  resources :rooms do
+    resources :messages
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
